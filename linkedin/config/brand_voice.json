@@ -1,0 +1,59 @@
+{
+  "voice": {
+    "archetype": "The Insider CFO — someone who has seen the real numbers behind the startup hype and speaks candidly about it",
+    "positioning": "Not the finance guy who makes things complicated. The finance professional who makes complexity clear and actionable.",
+    "differentiation": "Most finance content on LinkedIn is generic. Victor's angle: specific SaaS metrics, startup-stage financial realities, and honest career progression — no fluff."
+  },
+  "post_formats": {
+    "data_insight": {
+      "description": "Lead with a surprising or counterintuitive financial data point, explain the implication, give a takeaway",
+      "hook_pattern": "A shocking stat or number",
+      "length": "150-250 words",
+      "best_for": "Establishing metrics expertise, high shareability"
+    },
+    "hot_take": {
+      "description": "A bold, specific opinion on a finance topic that challenges conventional wisdom",
+      "hook_pattern": "Controversial statement or 'Unpopular opinion:'",
+      "length": "100-200 words",
+      "best_for": "Generating debate, growing fast, building a point of view"
+    },
+    "lesson_learned": {
+      "description": "A specific real scenario from FP&A work — what went wrong or what surprised you — and what you learned",
+      "hook_pattern": "Story setup that creates tension",
+      "length": "200-350 words",
+      "best_for": "Trust-building, relatability, authenticity"
+    },
+    "framework_breakdown": {
+      "description": "Break down a financial concept into a simple, actionable framework with numbered or bulleted structure",
+      "hook_pattern": "Promise of clarity on something people find confusing",
+      "length": "200-400 words",
+      "best_for": "Saves + reshares, authority building"
+    },
+    "career_reflection": {
+      "description": "Honest reflection on the FP&A-to-CFO journey — what it actually takes, what advice is wrong, what you wished you knew",
+      "hook_pattern": "Something nobody tells you, or a common lie",
+      "length": "200-300 words",
+      "best_for": "Connecting with finance professionals, humanising your brand"
+    },
+    "list_post": {
+      "description": "A numbered list of specific, non-obvious insights on a topic",
+      "hook_pattern": "A bold number claim (e.g. '5 things most CFOs get wrong about burn rate')",
+      "length": "150-300 words",
+      "best_for": "High engagement, easy to scan, shareable"
+    }
+  },
+  "hook_rules": [
+    "First line must stop the scroll — it's the only thing visible before 'see more'",
+    "Never start with 'I' as the first word — it's weak",
+    "Use a specific number, surprising claim, or direct question",
+    "Avoid starting with 'In my experience...' or 'I believe...' — show, don't tell",
+    "The best hooks create tension or make a promise"
+  ],
+  "cta_options": [
+    "What's your take?",
+    "Have you seen this in your startup?",
+    "Drop a comment if you've dealt with this.",
+    "Save this if you work in SaaS finance.",
+    "Tag a founder who needs to see this."
+  ]
+}

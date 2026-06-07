@@ -1,0 +1,30 @@
+{
+  "name": "Victor Ribeiro",
+  "current_role": "FP&A Finance Manager",
+  "industry": "Tech / SaaS / Startup",
+  "career_goal": "CFO",
+  "linkedin_stage": "early_growth",
+  "followers_approx": 400,
+  "target_audience": [
+    "Startup founders needing financial guidance",
+    "VCs and investors evaluating startup finance",
+    "FP&A professionals aspiring to senior roles",
+    "Startup operators and COOs",
+    "Finance managers on the CFO track"
+  ],
+  "content_pillars": [
+    "SaaS metrics and unit economics (ARR, NRR, CAC, LTV, Rule of 40, burn multiple)",
+    "FP&A to CFO career journey — honest and unfiltered",
+    "Fundraising from the finance side (what investors really look at)",
+    "Startup financial strategy and decision-making",
+    "Financial tools, automation, and modern FP&A practices",
+    "Common financial mistakes startups make"
+  ],
+  "tone": {
+    "style": "direct, data-driven, specific, occasionally provocative",
+    "avoid": ["corporate jargon", "empty motivation", "recycled quotes", "vague platitudes"],
+    "embrace": ["specific numbers", "real scenarios", "counterintuitive insights", "honest failures"]
+  },
+  "posting_frequency_target": "3-4 posts per week",
+  "brand_keywords": ["SaaS finance", "startup CFO", "FP&A", "financial strategy", "unit economics"]
+}
