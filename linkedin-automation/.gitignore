@@ -1,0 +1,14 @@
+node_modules/
+.env
+.linkedin_token
+drafts/images/
+*.local
+
+# Keep these directories but not their runtime contents
+drafts/*.json
+logs/*.jsonl
+logs/weekly_audit_*.json
+
+# OS
+.DS_Store
+Thumbs.db
