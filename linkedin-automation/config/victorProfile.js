@@ -1,0 +1,42 @@
+export const VICTOR_PROFILE = {
+  name: 'Victor Ribeiro dos Santos',
+  role: 'Financial Controller',
+  employer: 'Emanuel Synagogue, Sydney',
+  company: 'Altarion Business Intelligence',
+  location: 'Sydney, Australia',
+  specialties: ['Financial Control', 'Power BI', 'NFP Finance', 'Business Intelligence', 'Financial Process Improvement'],
+  audience: [
+    'Finance professionals and CFOs',
+    'NFP/charity sector leaders',
+    'Power BI and data analytics practitioners',
+    'Australian business community',
+    'Fractional CFO/controller prospects',
+    'Jewish community and philanthropic sector',
+  ],
+  goals: [
+    'Build professional authority in finance + BI',
+    'Grow network of finance and NFP professionals',
+    'Attract fractional/consulting engagements',
+    'Demonstrate expertise in Power BI and financial process improvement',
+  ],
+  voice: {
+    tone: 'Authoritative but approachable. Insightful. Occasionally personal. Never salesy.',
+    style: [
+      'Speaks with conviction — states opinions clearly',
+      'Uses specific numbers and data to ground claims',
+      'Occasionally references personal experience without oversharing',
+      'Asks questions that make readers reflect, not just react',
+      'Short paragraphs. One idea per paragraph.',
+      'Never uses filler buzzwords',
+      'Australian English spelling (organisation, analyse, programme)',
+    ],
+    avoidWords: ['synergy', 'leverage', 'game-changer', 'hustle', 'crush it', 'circle back', 'bandwidth',
+      'rockstar', 'ninja', 'disruption', 'thought leader', 'paradigm shift', 'move the needle',
+      'deep dive', 'low-hanging fruit', 'boil the ocean'],
+    doNotStartWith: ['I '],
+  },
+  postingSchedule: {
+    preferredDaysAEST: ['Tuesday', 'Wednesday', 'Thursday'],
+    preferredTimesAEST: ['07:30', '08:00', '12:00', '17:30'],
+  },
+};

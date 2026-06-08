@@ -1,0 +1,39 @@
+{
+  "name": "linkedin-automation",
+  "version": "1.0.0",
+  "description": "Multi-agent LinkedIn content automation pipeline for Victor Ribeiro dos Santos",
+  "main": "pipeline.js",
+  "type": "module",
+  "scripts": {
+    "start": "node pipeline.js",
+    "pipeline": "node pipeline.js",
+    "scan": "node agents/trendScanner.js",
+    "strategise": "node agents/contentStrategist.js",
+    "write": "node agents/postWriter.js",
+    "review": "node agents/qualityReviewer.js",
+    "image": "node agents/imageDirector.js",
+    "notify": "node agents/whatsappNotifier.js",
+    "publish": "node agents/linkedinPublisher.js",
+    "audit": "node agents/systemAuditor.js",
+    "webhook": "node webhook/server.js",
+    "dev": "nodemon pipeline.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.3",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "form-data": "^4.0.0",
+    "node-cron": "^3.0.3",
+    "openai": "^4.52.7",
+    "twilio": "^5.2.3",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "license": "MIT"
+}

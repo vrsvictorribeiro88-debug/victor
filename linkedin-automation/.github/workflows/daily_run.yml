@@ -1,0 +1,114 @@
+name: LinkedIn Daily Pipeline
+
+on:
+  schedule:
+    # 21:00 UTC = 07:00 AEST (UTC+10) / 08:00 AEDT (UTC+11)
+    # Runs every day — pipeline adjusts for AEST/AEDT automatically via TZ env
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Pipeline mode'
+        required: false
+        default: 'daily'
+        type: choice
+        options:
+          - daily
+          - audit
+          - dry_run
+
+defaults:
+  run:
+    working-directory: linkedin-automation
+
+jobs:
+  daily-pipeline:
+    name: Run Daily Content Pipeline
+    runs-on: ubuntu-latest
+    if: github.event.inputs.mode != 'audit'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: linkedin-automation/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daily pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          VICTOR_WHATSAPP_TO: ${{ secrets.VICTOR_WHATSAPP_TO }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+          WEBHOOK_BASE_URL: ${{ secrets.WEBHOOK_BASE_URL }}
+          TZ: Australia/Sydney
+          DRY_RUN: ${{ github.event.inputs.mode == 'dry_run' && 'true' || 'false' }}
+          AUTO_PUBLISH: 'false'
+        run: node pipeline.js
+
+      - name: Upload drafts as artefacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: drafts-${{ github.run_id }}
+          path: linkedin-automation/drafts/
+          retention-days: 30
+
+      - name: Upload logs as artefacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-${{ github.run_id }}
+          path: linkedin-automation/logs/
+          retention-days: 30
+
+  weekly-audit:
+    name: Run Weekly System Audit
+    runs-on: ubuntu-latest
+    # Runs every Monday at 22:00 UTC = 08:00 AEST Tuesday
+    if: github.event.inputs.mode == 'audit' || (github.event_name == 'schedule' && startsWith(github.run_id, ''))
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: linkedin-automation/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run system audit
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          VICTOR_WHATSAPP_TO: ${{ secrets.VICTOR_WHATSAPP_TO }}
+          TZ: Australia/Sydney
+        run: node pipeline.js --audit
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-audit-${{ github.run_id }}
+          path: linkedin-automation/logs/weekly_audit_*.json
+          retention-days: 90
